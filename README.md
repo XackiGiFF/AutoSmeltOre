@@ -21,5 +21,5 @@ Auto smelt ore when break!
 
 # Additional Notes
 
-- If you found bugs or want to give suggestions, please visit <a href="https://github.com/Eric-pm-pl/AutoSmeltOre/issues">here</a> or join our Discord server.
-- We accept all contributions! If you want to contribute, please make a pull request in <a href="https://github.com/Eric-pm-pl/AutoSmeltOre/pulls">here</a>.
+- If you found bugs or want to give suggestions, please visit <a href="https://github.com/David-pm-pl/AutoSmeltOre/issues">here</a> or join our Discord server.
+- We accept all contributions! If you want to contribute, please make a pull request in <a href="https://github.com/David-pm-pl/AutoSmeltOre/pulls">here</a>.
