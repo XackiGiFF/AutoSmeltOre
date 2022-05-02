@@ -10,11 +10,9 @@ use pocketmine\Server;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 
-use pocketmine\item\Item;
 use pocketmine\item\ItemIds;
 use pocketmine\item\StringToItemParser;
 use pocketmine\item\enchantment\StringToEnchantmentParser;
-use pocketmine\item\ItemFactory;
 
 class Main extends PluginBase implements Listener{
 
@@ -26,7 +24,11 @@ class Main extends PluginBase implements Listener{
       public function onBreak(BlockBreakEvent $event) : void{
             $item = $event->getItem();
             $block = $event->getBlock();
-            if($item->hasEnchantment(StringToEnchantmentParser::getInstance()->parse("silk_touch"))) return;
+            $player = $event->getPlayer();
+            if($item->hasEnchantment(StringToEnchantmentParser::getInstance()->parse("silk_touch"))){
+                  return;
+            }
+            if($this->getConfig()->get("Permission", true) and $player->hasPermission("autosmeltore.action.allow")){
                   $ores = [
                         ItemIds::COAL_ORE => StringToItemParser::getInstance()->parse("coal"),
                         ItemIds::IRON_ORE => StringToItemParser::getInstance()->parse("iron_ingot"),
@@ -40,7 +42,8 @@ class Main extends PluginBase implements Listener{
                   if($this->getConfig()->get(str_replace(" ", "_", $block->getName()), false)){
                         $event->setDrops(array_map(function ($item) use ($ores) {
                         return in_array($item->getId(), array_keys($ores)) ? $ores[$item->getId()] : $item;
-                  }, $event->getDrops()));
+                        }, $event->getDrops()));
+                  }
             }
       }
 }

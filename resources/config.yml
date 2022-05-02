@@ -1,4 +1,7 @@
 # Main Config of AutoSmeltOre
+# Set to true to force the player to have permission to use
+# Permission: autosmeltore.action.allow
+Permission: true
 # Set it to true to allow the ore to smelt
 Coal_Ore: true
 Iron_Ore: true
