@@ -1,0 +1,9 @@
+# Main Config of AutoSmeltOre
+# Set it to true to allow the ore to smelt
+Coal_Ore: true
+Iron_Ore: true
+Gold_Ore: true
+Redstone_Ore: true
+Diamond_Ore: true
+Emerald_Ore: true
+Nether_Quartz_Ore: true

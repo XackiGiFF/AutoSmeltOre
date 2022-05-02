@@ -14,16 +14,19 @@ use pocketmine\item\Item;
 use pocketmine\item\ItemIds;
 use pocketmine\item\StringToItemParser;
 use pocketmine\item\enchantment\StringToEnchantmentParser;
+use pocketmine\item\ItemFactory;
 
 class Main extends PluginBase implements Listener{
 
-      public function onEnable(): void{
+      public function onEnable() : void{
             $this->getServer()->getPluginManager()->registerEvents($this, $this);
+            $this->saveDefaultConfig();
       }
 
-      public function onBreak(BlockBreakEvent $event) {
+      public function onBreak(BlockBreakEvent $event) : void{
             $item = $event->getItem();
-            if($item->hasEnchantment(StringToEnchantmentParser::getInstance()->parse("silk_touch"))) return false;
+            $block = $event->getBlock();
+            if($item->hasEnchantment(StringToEnchantmentParser::getInstance()->parse("silk_touch"))) return;
                   $ores = [
                         ItemIds::COAL_ORE => StringToItemParser::getInstance()->parse("coal"),
                         ItemIds::IRON_ORE => StringToItemParser::getInstance()->parse("iron_ingot"),
@@ -34,8 +37,10 @@ class Main extends PluginBase implements Listener{
                         ItemIds::EMERALD_ORE => StringToItemParser::getInstance()->parse("emerald"),
                         ItemIds::QUARTZ_ORE => StringToItemParser::getInstance()->parse("quartz")
                   ];
-                  $event->setDrops(array_map(function ($item) use ($ores) {
-                  return in_array($item->getId(), array_keys($ores)) ? $ores[$item->getId()] : $item;
-            }, $event->getDrops()));
+                  if($this->getConfig()->get(str_replace(" ", "_", $block->getName()), false)){
+                        $event->setDrops(array_map(function ($item) use ($ores) {
+                        return in_array($item->getId(), array_keys($ores)) ? $ores[$item->getId()] : $item;
+                  }, $event->getDrops()));
+            }
       }
 }
