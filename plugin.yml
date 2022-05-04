@@ -4,3 +4,7 @@ version: 0.0.2
 main: YTBJero\AutoSmeltOre\Main
 author: YTBJero
 
+permissions:
+    autosmeltore.action.allow:
+        default: op
+        description: "Allow player to use AutoSmeltOre"
