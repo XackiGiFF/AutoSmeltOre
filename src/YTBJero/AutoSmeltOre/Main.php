@@ -36,9 +36,8 @@ class Main extends PluginBase implements Listener{
                         ItemIds::QUARTZ_ORE => StringToItemParser::getInstance()->parse("quartz")
                   ];
                   if($this->getConfig()->get(str_replace(" ", "_", $block->getName()))){
-                        $event->setDrops(array_map(function ($item) use ($ores) {
-                        return in_array($item->getId(), array_keys($ores)) ? $ores[$item->getId()] : $item;
-                        }, $event->getDrops()));
+						$drops = array_map(fn($item) => in_array($item->getId(), array_keys($ores)) ? $ores[$item->getId()] : $item, $event->getDrops());
+						$event->setDrops($drops);
                   }
             }
       }
