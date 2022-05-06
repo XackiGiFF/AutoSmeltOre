@@ -3,11 +3,11 @@
 namespace YTBJero\AutoSmeltOre;
 
 use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\item\enchantment\VanillaEnchantments;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\item\ItemIds;
 use pocketmine\item\StringToItemParser;
-use pocketmine\item\enchantment\StringToEnchantmentParser;
 
 class Main extends PluginBase implements Listener{
 
@@ -20,7 +20,7 @@ class Main extends PluginBase implements Listener{
             $item = $event->getItem();
             $block = $event->getBlock();
             $player = $event->getPlayer();
-            if($item->hasEnchantment(StringToEnchantmentParser::getInstance()->parse("silk_touch"))){
+            if($item->hasEnchantment(VanillaEnchantments::SILK_TOUCH())){
                   return;
             }
             if($this->getConfig()->get("Permission", true) and $player->hasPermission("autosmeltore.action.allow")){
