@@ -3,13 +3,8 @@
 namespace YTBJero\AutoSmeltOre;
 
 use pocketmine\event\block\BlockBreakEvent;
-
-use pocketmine\Player;
-use pocketmine\Server;
-
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
-
 use pocketmine\item\ItemIds;
 use pocketmine\item\StringToItemParser;
 use pocketmine\item\enchantment\StringToEnchantmentParser;
@@ -39,7 +34,7 @@ class Main extends PluginBase implements Listener{
                         ItemIds::EMERALD_ORE => StringToItemParser::getInstance()->parse("emerald"),
                         ItemIds::QUARTZ_ORE => StringToItemParser::getInstance()->parse("quartz")
                   ];
-                  if($this->getConfig()->get(str_replace(" ", "_", $block->getName()), false)){
+                  if($this->getConfig()->get(str_replace(" ", "_", $block->getName()))){
                         $event->setDrops(array_map(function ($item) use ($ores) {
                         return in_array($item->getId(), array_keys($ores)) ? $ores[$item->getId()] : $item;
                         }, $event->getDrops()));
