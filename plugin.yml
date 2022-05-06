@@ -1,8 +1,8 @@
 name: AutoSmeltOre
 api: 4.0.0
-version: 0.0.2
+version: 0.0.3
 main: YTBJero\AutoSmeltOre\Main
-author: YTBJero
+author: DavidGlitch04
 
 permissions:
     autosmeltore.action.allow:
