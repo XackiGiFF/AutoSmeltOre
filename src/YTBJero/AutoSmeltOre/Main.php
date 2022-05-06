@@ -17,6 +17,11 @@ class Main extends PluginBase implements Listener{
             $this->saveDefaultConfig();
       }
 
+	 /**
+	  * @param BlockBreakEvent $event
+	  * @priority NORMAL
+	  * @handleCancelled FALSE
+	  */
       public function onBreak(BlockBreakEvent $event) : void{
             $item = $event->getItem();
             $block = $event->getBlock();
