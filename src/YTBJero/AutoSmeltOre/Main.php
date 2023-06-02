@@ -11,7 +11,6 @@ use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
-use pocketmine\item\ItemIds;
 
 class Main extends PluginBase implements Listener{
     /** @var Item[] */
