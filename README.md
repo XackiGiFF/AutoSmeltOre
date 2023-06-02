@@ -3,7 +3,7 @@
 <a href="https://poggit.pmmp.io/p/AutoSmeltOre"><img src="https://poggit.pmmp.io/shield.dl.total/AutoSmeltOre"></a>
 [![Discord](https://img.shields.io/discord/1100650029573738508.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/yAhsgskaGy)
 
-**NOTICE:** This plugin branch is for PocketMine-MP 4.
+**NOTICE:** This plugin branch is for PocketMine-MP 5.
 
 Auto smelt ore when break!
 

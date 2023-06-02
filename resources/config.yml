@@ -1,12 +1,11 @@
 # Main Config of AutoSmeltOre
 # Set to true to force the player to have permission to use
 # Permission: autosmeltore.action.allow
-Permission: true
+permission: true
 # Set it to true to allow the ore to smelt
-Coal_Ore: true
 Iron_Ore: true
+Deepslate_Iron_Ore: true
 Gold_Ore: true
-Redstone_Ore: true
-Diamond_Ore: true
-Emerald_Ore: true
+Deepslate_Gold_Ore: true
+Ancient_Debris: true
 Nether_Quartz_Ore: true

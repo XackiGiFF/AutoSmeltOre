@@ -1,6 +1,6 @@
 name: AutoSmeltOre
-api: 4.0.0
-version: 0.0.3
+api: 5.0.0
+version: 0.0.4
 main: YTBJero\AutoSmeltOre\Main
 author: DavidGlitch04
 
