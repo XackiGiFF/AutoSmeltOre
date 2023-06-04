@@ -8,6 +8,7 @@ use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\EventPriority;
 use pocketmine\item\enchantment\VanillaEnchantments;
 use pocketmine\item\Item;
+use pocketmine\item\ItemTypeIds;
 use pocketmine\item\VanillaItems;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
@@ -22,11 +23,11 @@ class Main extends PluginBase implements Listener{
     public function onEnable() : void{
         $this->saveDefaultConfig();
         $this->ores = [
-            VanillaBlocks::IRON_ORE()->getName() => VanillaItems::IRON_INGOT(),
-            VanillaBlocks::DEEPSLATE_IRON_ORE()->getName() => VanillaItems::IRON_INGOT(),
-            VanillaBlocks::GOLD_ORE()->getName() => VanillaItems::GOLD_INGOT(),
-            VanillaBlocks::DEEPSLATE_GOLD_ORE()->getName() => VanillaItems::GOLD_INGOT(),
-            VanillaBlocks::ANCIENT_DEBRIS()->getName() => VanillaItems::NETHERITE_SCRAP()
+            ItemTypeIds::IRON_ORE => VanillaItems::IRON_INGOT(),
+            ItemTypeIds::DEEPSLATE_IRON_ORE => VanillaItems::IRON_INGOT(),
+            ItemTypeIds::GOLD_ORE => VanillaItems::GOLD_INGOT(),
+            ItemTypeIds::DEEPSLATE_GOLD_ORE => VanillaItems::GOLD_INGOT(),
+            ItemTypeIds::ANCIENT_DEBRIS => VanillaItems::NETHERITE_SCRAP()
         ];
         $onBreak = \Closure::fromCallable([$this, "onBreak"]);
         $this->getServer()->getPluginManager()->registerEvent(BlockBreakEvent::class, $onBreak, EventPriority::NORMAL, $this);
@@ -48,10 +49,10 @@ class Main extends PluginBase implements Listener{
         if (!$player->hasPermission("autosmeltore.action.allow")) return;
         if ($this->getConfig()->get("permission", true)) {
 
-            if($this->getConfig()->get(str_replace(" ", "_", $block->getName()), true)){
+            if($this->getConfig()->get(str_replace(" ", "_", $block->getTypeId()), true)){
                 $drops = [];
                 foreach ($block->getDrops($item) as $drop) {
-                    $drops[] = $this->ores[$block->getName()] ?? $drop;
+                    $drops[] = $this->ores[$block->getTypeId()] ?? $drop;
                 }
                 $event->setDrops($drops);
             }
